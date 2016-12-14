@@ -55,8 +55,8 @@ $(function() {
 	<label class="control-label col-md-1" for="orgType_type0">类型</label>
 	<div class="col-sm-5">
       <label><input id="orgType_type0" type="radio" name="type" value="0" ${model.type == 0 ? 'checked' : ''}>组织</label>
-      <label><input id="orgType_type1" type="radio" name="type" value="1" ${model.type == 1 ? 'checked' : ''}>岗位</label>
-      <label><input id="orgType_type2" type="radio" name="type" value="2" ${model.type == 2 ? 'checked' : ''}>人员</label>
+      <label><input id="orgType_type1" type="radio" name="type" value="1" ${model.type == 1 ? 'checked' : ''}>人员</label>
+      <label><input id="orgType_type2" type="radio" name="type" value="2" ${model.type == 2 ? 'checked' : ''}>岗位</label>
     </div>
   </div>
   <div class="form-group">

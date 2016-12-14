@@ -8,12 +8,12 @@ import javax.annotation.Resource;
 
 import com.mossle.api.org.OrgConnector;
 import com.mossle.api.org.OrgDTO;
-
 import com.mossle.party.PartyConstants;
 import com.mossle.party.persistence.domain.PartyEntity;
 import com.mossle.party.persistence.domain.PartyStruct;
 import com.mossle.party.persistence.manager.PartyEntityManager;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -93,11 +93,32 @@ public class PartyOrgConnector implements OrgConnector {
 
     /**
      * 获得人员对应的最近的岗位下的所有用户.
+     * 增加处理多个岗位的功能,分配任务到第一个匹配到的岗位
      */
     public List<String> getPositionUserIds(String userId, String positionName) {
         PartyEntity partyEntity = this.findUser(userId);
 
-        return this.findPositionUserIds(partyEntity, positionName);
+        String[] positionNameArray = positionName.split("\\|");
+        for(String position:positionNameArray)
+        {
+        	logger.info("position={}",position);
+        	if(StringUtils.isEmpty(position))
+        	{
+        		continue;
+        	}
+
+        	List<String> userIds=this.findPositionUserIds(partyEntity, position);
+        	if(userIds==null || userIds.size()==0)
+        	{
+        		continue;
+        	}
+        	else
+        	{
+        		return userIds;
+        	}
+        }
+
+        return new ArrayList<String>();
     }
 
     /**

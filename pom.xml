@@ -6,9 +6,9 @@
   <name>lemon</name>
   <packaging>war</packaging>
   <description>Lemon is an OA.</description>
-  
+
   <inceptionYear>2016</inceptionYear>
-  
+
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -16,16 +16,40 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
   <!--
   <contributors>
     <contributor>
       <name>Someone</name>
     </contributor>
   </contributors>-->
-  
-  
-  
+
+  	<repositories>
+
+		<repository>
+
+			<id>nexus</id>
+			<name>nexus</name>
+			<url>http://191.101.152.238:8081/nexus/content/groups/public/</url>
+
+		</repository>
+
+	</repositories>
+
+	<pluginRepositories>
+
+		<pluginRepository>
+
+			<id>nexus</id>
+			<name>nexus</name>
+			<url>http://191.101.152.238:8081/nexus/content/groups/public/</url>
+
+		</pluginRepository>
+
+	</pluginRepositories>
+
+
+
   <prerequisites>
     <maven>3.0</maven>
   </prerequisites>
@@ -1046,7 +1070,7 @@
           <configuration>
             <connectors>
               <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                  <port>8080</port>
+                  <port>9999</port>
                 <maxIdleTime>3600000</maxIdleTime>
               </connector>
             </connectors>
